@@ -1,0 +1,38 @@
+---
+version: 2.1
+orbs:
+  node: circleci/node@4.7.0
+jobs:
+  test:
+    docker:
+      - image: 'cimg/base:stable'
+    resource_class: 'small'
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - node/install
+      - run:
+          command: |
+            npm install
+            npm test
+  lint:
+    docker:
+      - image: 'cimg/base:stable'
+    resource_class: 'small'
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - node/install
+      - run:
+          command: |
+            npm install
+            npm run format
+            npm run lint
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - test
+      - lint
