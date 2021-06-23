@@ -38,9 +38,41 @@ describe('/package/:name/:version endpoint', () => {
     expect(json.name).toEqual(packageName);
     expect(json.version).toEqual(packageVersion);
     expect(json.dependencies).toEqual({
-      'loose-envify': '1.4.0',
-      'object-assign': '4.1.1',
-      'prop-types': '15.7.2',
+      'loose-envify': {
+        version: '1.4.0',
+        dependencies: {
+          'js-tokens': {
+            version: '4.0.0',
+            dependencies: {},
+          },
+        },
+      },
+      'object-assign': {
+        version: '4.1.1',
+        dependencies: {},
+      },
+      'prop-types': {
+        version: '15.7.2',
+        dependencies: {
+          'object-assign': {
+            version: '4.1.1',
+            dependencies: {},
+          },
+          'loose-envify': {
+            version: '1.4.0',
+            dependencies: {
+              'js-tokens': {
+                version: '4.0.0',
+                dependencies: {},
+              },
+            },
+          },
+          'react-is': {
+            version: '16.13.1',
+            dependencies: {},
+          },
+        },
+      },
     });
   });
 });
