@@ -1,8 +1,8 @@
 package api_test
 
 import (
-	"io"
 	"encoding/json"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -23,14 +23,15 @@ func TestPackageHandler(t *testing.T) {
 
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	body, err := io.ReadAll(resp.Body)
+	require.Nil(t, err)
 
-	var data api.PackageHandlerResponse
+	var data api.Package
 	err = json.Unmarshal(body, &data)
 	require.Nil(t, err)
 
 	assert.Equal(t, "react", data.Name)
 	assert.Equal(t, "16.13.0", data.Version)
-	assert.Equal(t, "^1.1.0", data.Dependencies["loose-envify"])
-	assert.Equal(t, "^4.1.1", data.Dependencies["object-assign"])
-	assert.Equal(t, "^15.6.2", data.Dependencies["prop-types"])
+	assert.Equal(t, "^1.1.0", data.Dependencies["loose-envify"].Version)
+	assert.Equal(t, "^4.1.1", data.Dependencies["object-assign"].Version)
+	assert.Equal(t, "^15.6.2", data.Dependencies["prop-types"].Version)
 }
