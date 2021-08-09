@@ -1,0 +1,33 @@
+---
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: "golang:1.17-alpine"
+    resource_class: "small"
+    steps:
+      - checkout
+      - run:
+          environment:
+            CGO_ENABLED: 0
+          command: |
+            go test ./...
+  lint:
+    docker:
+      - image: "golangci/golangci-lint:v1.42.1"
+    resource_class: "small"
+    steps:
+      - checkout
+      - run:
+          environment:
+            CGO_ENABLED: 0
+          command: |
+            golangci-lint run -v
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - test
+      - lint
