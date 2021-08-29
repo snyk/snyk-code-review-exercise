@@ -1,3 +1,7 @@
+export type NPMDependencies = {
+  [packageName: string]: string;
+};
+
 /**
  * The result of a package request against `https://registry.npmjs.org`. This is
  * a subset of the returned data, not a full representation, that contains
@@ -33,9 +37,7 @@ export interface NPMPackage {
     [version: string]: {
       name: string;
       version: string;
-      dependencies?: {
-        [packageName: string]: string;
-      };
+      dependencies?: NPMDependencies;
     };
   };
 }
