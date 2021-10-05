@@ -5,6 +5,8 @@ import (
 	"io"
 	"net/http"
 	"net/http/httptest"
+	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/snyk/snyk-code-review-exercise/api"
@@ -32,8 +34,10 @@ func TestPackageHandler(t *testing.T) {
 	assert.Equal(t, "react", data.Name)
 	assert.Equal(t, "16.13.0", data.Version)
 
-	assert.Len(t, data.Dependencies, 3)
-	assert.Equal(t, "1.4.0", data.Dependencies["loose-envify"])
-	assert.Equal(t, "4.1.1", data.Dependencies["object-assign"])
-	assert.Equal(t, "15.7.2", data.Dependencies["prop-types"])
+	fixture, err := os.Open(filepath.Join("testdata", "react-16.13.0.json"))
+	require.Nil(t, err)
+	var fixtureObj api.NpmPackageVersion
+	require.Nil(t, json.NewDecoder(fixture).Decode(&fixtureObj))
+
+	assert.Equal(t, fixtureObj, data)
 }
