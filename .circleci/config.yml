@@ -4,7 +4,7 @@ orbs:
   python: circleci/python@1.5.0
 jobs:
   test:
-    executor: python39
+    executor: python/default
     resource_class: 'small'
     steps:
       - setup_remote_docker:
@@ -16,7 +16,7 @@ jobs:
           command: |
             poetry run pytest
   lint:
-    executor: python39
+    executor: python/default
     resource_class: 'small'
     steps:
       - run:
