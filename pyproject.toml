@@ -11,6 +11,7 @@ uvicorn = {extras = ["standard"], version = "^0.16.0"}
 requests = "^2.26.0"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
 
 [tool.black]
 line_length = 99
