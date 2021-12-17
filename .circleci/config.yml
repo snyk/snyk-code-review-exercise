@@ -20,8 +20,8 @@ jobs:
     resource_class: 'small'
     steps:
       - run:
-        name: Install pre-commit
-        command: pip install pre-commit
+          name: Install pre-commit
+          command: pip install pre-commit
       - checkout
       - python/install-packages:
           pkg-manager: poetry

@@ -2,7 +2,7 @@ from typing import Optional
 
 import requests
 
-from type import NPMPackage, NPMPackageVersion
+from src.types import NPMPackage, NPMPackageVersion
 
 NPM_REGISTRY_URL = "https://registry.npmjs.org"
 

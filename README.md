@@ -13,7 +13,7 @@ To install dependencies and start the server in development mode:
 
 ```sh
 poetry install
-python app.py
+python src/app.py
 ```
 
 The server will now be running on an available port (defaulting to 3000) and

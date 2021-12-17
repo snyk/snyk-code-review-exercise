@@ -1,8 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
 
-from package import get_package
-from settings import SERVICE_HOST, SERVICE_LOG_LEVEL, SERVICE_PORT
+from src.package import get_package
+from src.settings import SERVICE_HOST, SERVICE_LOG_LEVEL, SERVICE_PORT
 
 app = FastAPI()
 
