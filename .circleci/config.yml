@@ -2,9 +2,15 @@
 version: 2.1
 orbs:
   python: circleci/python@1.5.0
+
+executors:
+  python39:
+    docker:
+      - image: cimg/python:3.9
+
 jobs:
   test:
-    executor: python/default
+    executor: python39
     resource_class: 'small'
     steps:
       - setup_remote_docker:
@@ -16,7 +22,7 @@ jobs:
           command: |
             poetry run pytest
   lint:
-    executor: python/default
+    executor: python39
     resource_class: 'small'
     steps:
       - run:
