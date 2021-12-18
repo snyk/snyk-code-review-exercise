@@ -140,6 +140,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "node-semver"
+version = "0.8.1"
+description = "port of node-semver"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.extras]
+testing = ["pytest"]
+
+[[package]]
 name = "packaging"
 version = "21.3"
 description = "Core utilities for Python packages"
@@ -360,7 +371,7 @@ python-versions = ">=3.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "bf323ef190cd0c90a09be0c64ca1484b6beba5d248ef9dcf7ff617697148a69c"
+content-hash = "cc35416ae1925cc90777801b6c4545efc449445e9ac431284bec59206fa1c3a0"
 
 [metadata.files]
 anyio = [
@@ -436,6 +447,10 @@ idna = [
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
     {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
+]
+node-semver = [
+    {file = "node-semver-0.8.1.tar.gz", hash = "sha256:281600d009606f4f63ddcbe148992e235b39a69937b9c20359e2f4a2adbb1e00"},
+    {file = "node_semver-0.8.1-py3-none-any.whl", hash = "sha256:3b3594c2d87e1a44fd332ce7f00e87a235a0a4fb9cb46d62b243e43c019c27fd"},
 ]
 packaging = [
     {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:ef103e05f519cdc783ae24ea4e2e0f508a9c99b2d4969652eed6a2e1ea5bd522"},
