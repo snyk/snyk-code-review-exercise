@@ -1,6 +1,7 @@
 from typing import Optional
 
 import requests
+from semver import max_satisfying
 
 from src.models import NPMPackage, NPMPackageVersion
 
@@ -17,7 +18,7 @@ async def get_package(name: str, version: Optional[str] = None) -> NPMPackageVer
         versions=npm_package["versions"],
     )
     if not version:
-        version = max(package["versions"].keys())
+        version = max_satisfying(package.versions.keys(), "*")
 
-    dependencies = package["versions"][version]["dependencies"]
+    dependencies = package.versions[version].dependencies
     return NPMPackageVersion(name=name, version=version, dependencies=dependencies)
