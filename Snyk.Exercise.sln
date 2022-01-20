@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snyk.Exercise.WebApi", "Snyk.Exercise.WebApi\Snyk.Exercise.WebApi.csproj", "{33CD045A-D990-4AE8-92F3-8E3B55275FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snyk.Exercise.WebApi.Test", "Snyk.Exercise.WebApi.Test\Snyk.Exercise.WebApi.Test.csproj", "{5DC8739B-32D5-4B2F-A639-6EAC04F47AFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33CD045A-D990-4AE8-92F3-8E3B55275FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33CD045A-D990-4AE8-92F3-8E3B55275FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33CD045A-D990-4AE8-92F3-8E3B55275FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33CD045A-D990-4AE8-92F3-8E3B55275FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DC8739B-32D5-4B2F-A639-6EAC04F47AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC8739B-32D5-4B2F-A639-6EAC04F47AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC8739B-32D5-4B2F-A639-6EAC04F47AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC8739B-32D5-4B2F-A639-6EAC04F47AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7A79A93-9948-498A-8699-DCC0E2148EBE}
+	EndGlobalSection
+EndGlobal
