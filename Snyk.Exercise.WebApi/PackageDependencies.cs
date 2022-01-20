@@ -6,5 +6,5 @@ public class PackageDependencies
 
     public string Version { get; set; }
 
-    public Dictionary<string, string> Dependencies { get; set; }
+    public Dictionary<string, dynamic> Dependencies { get; set; }
 }
