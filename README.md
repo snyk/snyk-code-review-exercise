@@ -1,44 +1,31 @@
-# npm dependency server
+# Snyk code review exercise
 
-A web server that provides a basic HTTP api for querying the dependency
-tree of an [npm](https://npmjs.org) package.
+Hello there. You might have been asked to look at this repository and download it. You're currently on the `main` branch, and will need to work on a branch/pull request relavent to the interview you've been invited too.
 
-## Prerequisites
+All exercises are based on the same ticket - [Ticket #5](https://github.com/snyk/snyk-code-review-exercise/issues/5).
 
-* [Python 3.9](https://www.python.org/downloads/release/python-399/)
+We have several flavors of each exercise in different languages, each has a "main" branch with the current state of the application and a "feature" branch that contains changes we'd like you to review.
 
-## Getting Started
+**TypeScript**
 
-To install dependencies and start the server in development mode:
+* [Pull Request #8](https://github.com/snyk/snyk-code-review-exercise/pull/8)
+* [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/typescript) (`typescript`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/typescript-recursive-deps) (`typescript-recursive-deps`)
 
-```sh
-poetry install
-cd src
-poetry run python app.py
-```
+**Go**
 
-The server will now be running on an available port (defaulting to 3000) and
-will restart on changes to the src files.
+* [Pull Request #6](https://github.com/snyk/snyk-code-review-exercise/pull/6)
+* [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/golang) (`golang`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/golang-recursive-deps) (`golang-recursive-deps`)
 
-Then we can try the `/package` endpoint. Here is an example that uses `curl` and
-`jq`, but feel free to use any client.
+**Python**
 
-```sh
-curl -s http://localhost:3000/package/react/16.13.0 | jq .
-```
+* [Pull Request #9](https://github.com/snyk/snyk-code-review-exercise/pull/9)
+* [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/python) (`python`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/feat/python-recursive-deps) (`feat/python-recursive-deps`)
 
-Most of the code is boilerplate; the logic for the `/package` endpoint can be
-found in [src/package.py](src/package.py), and some basic tests in
-[test/test_package.py](test/test_package.py)
+**.NET**
 
-You can run the tests with:
-
-```sh
-pytest
-```
-
-The code is linted via `pre-commit`, you can run this via:
-
-```sh
-pre-commit
-```
+* [Pull Request #10](https://github.com/snyk/snyk-code-review-exercise/pull/10)
+* [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/dotnet) (`dotnet`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/feat/dotnet-recursive-deps) (`dotnet-recursive-deps`)
