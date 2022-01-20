@@ -23,3 +23,9 @@ We have several flavors of each exercise in different languages, each has a "mai
 * [Pull Request #9](https://github.com/snyk/snyk-code-review-exercise/pull/9)
 * [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/python) (`python`)
 * [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/feat/python-recursive-deps) (`feat/python-recursive-deps`)
+
+**.NET**
+
+* [Pull Request #10](https://github.com/snyk/snyk-code-review-exercise/pull/10)
+* [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/dotnet) (`dotnet`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/feat/dotnet-recursive-deps) (`dotnet-recursive-deps`)
