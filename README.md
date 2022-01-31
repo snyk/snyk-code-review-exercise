@@ -6,7 +6,14 @@ All exercises are based on the same ticket - [Ticket #5](https://github.com/snyk
 
 We have several flavors of each exercise in different languages, each has a "main" branch with the current state of the application and a "feature" branch that contains changes we'd like you to review.
 
-**TypeScript**
+**TypeScript Option 1**
+
+* [Pull Request #1](https://github.com/snyk/snyk-code-review-exercise/pull/1)
+* [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/typescript) (`typescript`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/transative-dependencies) (`typescript-recursive-deps`)
+
+
+**TypeScript Option 2**
 
 * [Pull Request #8](https://github.com/snyk/snyk-code-review-exercise/pull/8)
 * [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/typescript) (`typescript`)
