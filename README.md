@@ -10,7 +10,7 @@ We have several flavors of each exercise in different languages, each has a "mai
 
 * [Pull Request #1](https://github.com/snyk/snyk-code-review-exercise/pull/1)
 * [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/typescript) (`typescript`)
-* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/transative-dependencies) (`typescript-recursive-deps`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/transative-dependencies) (`typescript-recursive`)
 
 
 **TypeScript Option 2**
