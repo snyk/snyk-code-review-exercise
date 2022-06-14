@@ -71,10 +71,7 @@ func resolveDependencies(pkg *NpmPackageVersion, versionConstraint string) error
 	}
 	pkg.Version = concreteVersion
 
-	npmPkg, err := fetchPackage(pkg.Name, pkg.Version)
-	if err != nil {
-		return err
-	}
+	npmPkg := pkgMeta.Versions[concreteVersion]
 	for dependencyName, dependencyVersionConstraint := range npmPkg.Dependencies {
 		dep := &NpmPackageVersion{Name: dependencyName, Dependencies: map[string]*NpmPackageVersion{}}
 		pkg.Dependencies[dependencyName] = dep
@@ -110,23 +107,6 @@ func filterCompatibleVersions(constraint *semver.Constraints, pkgMeta *npmPackag
 		}
 	}
 	return compatible
-}
-
-func fetchPackage(name, version string) (*npmPackageResponse, error) {
-	resp, err := http.Get(fmt.Sprintf("https://registry.npmjs.org/%s/%s", name, version))
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	var parsed npmPackageResponse
-	_ = json.Unmarshal(body, &parsed)
-	return &parsed, nil
 }
 
 func fetchPackageMeta(p string) (*npmPackageMetaResponse, error) {
