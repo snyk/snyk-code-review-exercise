@@ -20,7 +20,7 @@ export const getPackage: RequestHandler = async function (req, res, next) {
 
     for (const [name, range] of Object.entries(dependencies)) {
       const subDep = await getDependencies(name, range);
-      dependencyTree[name] = { version: range, dependencies: subDep };
+      dependencyTree[name] = subDep;
     }
 
     return res
@@ -42,10 +42,12 @@ async function getDependencies(name: string, range: string): Promise<any> {
   if (v) {
     const newDeps = npmPackage.versions[v].dependencies;
     for (const [name, range] of Object.entries(newDeps ?? {})) {
-      dependencies[name] = { version: range, dependencies: subDep };
       const subDep = await getDependencies(name, range);
+      dependencies[name] = subDep;
     }
+
+    return { version: v, dependencies };
   }
 
-  return dependencies;
+  return {};
 }
