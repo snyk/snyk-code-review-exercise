@@ -42,8 +42,8 @@ async function getDependencies(name: string, range: string): Promise<any> {
   if (v) {
     const newDeps = npmPackage.versions[v].dependencies;
     for (const [name, range] of Object.entries(newDeps ?? {})) {
-      const subDep = getDependencies(name, range);
       dependencies[name] = { version: range, dependencies: subDep };
+      const subDep = await getDependencies(name, range);
     }
   }
 
