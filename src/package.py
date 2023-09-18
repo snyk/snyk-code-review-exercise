@@ -3,7 +3,7 @@ from typing import Optional
 import requests
 from semver import max_satisfying
 
-from src.models import NPMPackage, Package
+from models import NPMPackage, Package
 
 NPM_REGISTRY_URL = "https://registry.npmjs.org"
 

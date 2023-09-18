@@ -5,9 +5,9 @@ description = "A web server that provides a basic HTTP api for querying the depe
 authors = ["Snyk"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.11"
 fastapi = "^0.70.1"
-uvicorn = {extras = ["standard"], version = "^0.16.0"}
+uvicorn = "^0.23.2"
 requests = "^2.26.0"
 node-semver = "^0.8.1"
 
