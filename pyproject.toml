@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "snyk_code_review_exercise"
+version = "1.0.0"
+description = "A web server that provides a basic HTTP api for querying the dependency tree of an npm package."
+authors = ["Snyk"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.26.0"
+node-semver = "^0.8.1"
+django = "^4.2.7"
+psycopg2 = "^2.9.9"
+djangorestframework = "^3.14.0"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.17.2"
+pytest = "^7.4.3"
+
+[tool.black]
+line_length = 99
+target_version = ["py311"]
+exclude = ".git/"
+
+[tool.flake8]
+max-line-length = 99
+
+[tool.isort]
+line_length = 99
+profile = "black"
+combine_as_imports = true
+known_tests = "tests"
+sections = [
+  "FUTURE",
+  "STDLIB",
+  "THIRDPARTY",
+  "FIRSTPARTY",
+  "LOCALFOLDER",
+  "TESTS"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
