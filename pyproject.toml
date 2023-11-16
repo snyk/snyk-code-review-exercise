@@ -11,6 +11,7 @@ node-semver = "^0.8.1"
 django = "^4.2.7"
 psycopg2 = "^2.9.9"
 djangorestframework = "^3.14.0"
+djangorestframework-recursive = "^0.1.2"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.17.2"

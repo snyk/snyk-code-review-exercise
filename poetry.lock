@@ -220,6 +220,22 @@ django = ">=3.0"
 pytz = "*"
 
 [[package]]
+name = "djangorestframework-recursive"
+version = "0.1.2"
+description = "Recursive Serialization for Django REST framework"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "djangorestframework-recursive-0.1.2.tar.gz", hash = "sha256:f8fc2d677ccb32fe53ec4153a45f66c822d0ce444824cba56edc76ca89b704ae"},
+    {file = "djangorestframework_recursive-0.1.2-py2.py3-none-any.whl", hash = "sha256:e4e51b26b7ee3c9f9b838885d638b91293e7c66e85b5955f278a6e10eb34ce7c"},
+]
+
+[package.dependencies]
+Django = "*"
+djangorestframework = ">=3.0"
+
+[[package]]
 name = "executing"
 version = "2.0.1"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -665,4 +681,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "1757d5def05d9b2c3fca5796e0182c2e28937d036639a99780e89bf086ca3906"
+content-hash = "99a91b23278fd68ca8ddb1e83bf199f08cdc25050997a277c7928a7b42e57c32"
