@@ -16,14 +16,14 @@ poetry install
 python src/app.py
 ```
 
-The server will now be running on an available port (defaulting to 3000) and
+The server will now be running on an available port (defaulting to 8000) and
 will restart on changes to the src files.
 
 Then we can try the `/package` endpoint. Here is an example that uses `curl` and
 `jq`, but feel free to use any client.
 
 ```sh
-curl -s http://localhost:3000/package/react/16.13.0 | jq .
+curl -s http://localhost:8000/package/react/16.13.0 | jq .
 ```
 
 Most of the code is boilerplate; the logic for the `/package` endpoint can be
