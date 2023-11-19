@@ -1,0 +1,42 @@
+---
+version: 2.1
+orbs:
+  python: circleci/python@1.5.0
+
+executors:
+  python311:
+    docker:
+      - image: cimg/python:3.11
+
+jobs:
+  test:
+    executor: python311
+    resource_class: 'small'
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
+      - run:
+          command: |
+            poetry run pytest
+  lint:
+    executor: python311
+    resource_class: 'small'
+    steps:
+      - run:
+          name: Install pre-commit
+          command: pip install pre-commit
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
+      - run:
+          command: |
+            pre-commit
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - test
+      - lint
