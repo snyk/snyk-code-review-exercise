@@ -1,8 +1,8 @@
 from rest_framework import serializers
+from rest_framework_recursive.fields import RecursiveField
 
 
-class VersionedPackageSerializer(serializers.Serializer):
+class PackageSerializer(serializers.Serializer):
     name = serializers.CharField(required=True)
-    description = serializers.CharField(required=True, allow_null=True)
     version = serializers.CharField()
-    dependencies = serializers.DictField(child=serializers.CharField())
+    dependencies = serializers.ListSerializer(child=RecursiveField())
