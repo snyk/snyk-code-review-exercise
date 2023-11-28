@@ -13,7 +13,7 @@ To install dependencies and start the server in development mode:
 
 ```sh
 poetry install
-python src/app.py
+poetry run ./manage.py runserver
 ```
 
 The server will now be running on an available port (defaulting to 8000) and
@@ -33,10 +33,10 @@ found in [src/package.py](src/package.py), and some basic tests in
 You can run the tests with:
 
 ```sh
-pytest
+poetry run pytest
 ```
 
-The code is linted via `pre-commit`, you can run this via:
+The code is linted using `pre-commit`, you can run this via:
 
 ```sh
 pre-commit
