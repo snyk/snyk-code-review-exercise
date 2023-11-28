@@ -31,6 +31,12 @@ We have several flavors of each exercise in different languages, each has a "mai
 * [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/python) (`python`)
 * [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/feat/python-recursive-deps) (`feat/python-recursive-deps`)
 
+**Python 1.0**
+
+* [Pull Request #15](https://github.com/snyk/snyk-code-review-exercise/pull/15)
+* [Main Branch](https://github.com/snyk/snyk-code-review-exercise/tree/python-1.0) (`python-1.0`)
+* [Feature Branch](https://github.com/snyk/snyk-code-review-exercise/tree/feat/python-transitive-deps) (`feat/python-transitive-deps`)
+
 **.NET**
 
 * [Pull Request #10](https://github.com/snyk/snyk-code-review-exercise/pull/10)
