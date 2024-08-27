@@ -13,6 +13,7 @@ To install dependencies and start the server in development mode:
 
 ```sh
 poetry install
+poetry run ./manage.py migrate
 poetry run ./manage.py runserver
 ```
 
@@ -34,6 +35,12 @@ You can run the tests with:
 
 ```sh
 poetry run pytest
+```
+
+You can update test with:
+
+```sh
+poerty run pytest --snapshot-update
 ```
 
 The code is linted using `pre-commit`, you can run this via:
