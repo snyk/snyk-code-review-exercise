@@ -17,6 +17,8 @@ djangorestframework-recursive = "^0.1.2"
 ipython = "^8.17.2"
 pytest = "^7.4.3"
 pytest-django = "^4.7.0"
+pytest-snapshot = "^0.9.0"
+aiohttp = "^3.10.5"
 
 [tool.black]
 line_length = 99
