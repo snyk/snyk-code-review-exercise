@@ -39,3 +39,9 @@ export interface NPMPackage {
     };
   };
 }
+
+export interface Package {
+  version: string;
+  dependencies: Record<string, Package>;
+  partial?: boolean;
+}

@@ -13,8 +13,11 @@
     "format": "prettier '{src,test}/**/*.ts'"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.17.1",
     "got": "^11.8.1",
+    "loglevel": "^1.9.2",
+    "node-cache": "^5.1.2",
     "semver": "^7.3.5"
   },
   "devDependencies": {
