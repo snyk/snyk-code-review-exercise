@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"sort"
 
@@ -40,7 +41,7 @@ func packageHandler(w http.ResponseWriter, r *http.Request) {
 	pkgVersion := vars["version"]
 
 	rootPkg := &NpmPackageVersion{Name: pkgName, Dependencies: map[string]*NpmPackageVersion{}}
-	if err := resolveDependencies(rootPkg, pkgVersion); err != nil {
+	if err := resolveDependencies(rootPkg, pkgVersion, map[string]bool{}); err != nil {
 		println(err.Error())
 		w.WriteHeader(500)
 		return
@@ -60,7 +61,9 @@ func packageHandler(w http.ResponseWriter, r *http.Request) {
 	_, _ = w.Write(stringified)
 }
 
-func resolveDependencies(pkg *NpmPackageVersion, versionConstraint string) error {
+func resolveDependencies(pkg *NpmPackageVersion, versionConstraint string, parents map[string]bool) error {
+	defer log.Printf("Exiting recursion on package: %s", pkg.Name)
+
 	pkgMeta, err := fetchPackageMeta(pkg.Name)
 	if err != nil {
 		return err
@@ -71,20 +74,28 @@ func resolveDependencies(pkg *NpmPackageVersion, versionConstraint string) error
 	}
 	pkg.Version = concreteVersion
 
+	// concat string with package name and version to use as key in map
+	key := pkg.Name + "@" + pkg.Version
+	if parents[key] { // if visited, exits recursion
+		log.Printf("Already resolved, skipping %s@%s", pkg.Name, pkg.Version)
+		return nil
+	}
+	parents[key] = true // marks key as visited
+
 	npmPkg, err := fetchPackage(pkg.Name, pkg.Version)
 	if err != nil {
 		return err
 	}
 	for dependencyName, dependencyVersionConstraint := range npmPkg.Dependencies {
+		log.Printf("Resolving %s@%s", dependencyName, dependencyVersionConstraint)
 		dep := &NpmPackageVersion{Name: dependencyName, Dependencies: map[string]*NpmPackageVersion{}}
 		pkg.Dependencies[dependencyName] = dep
-		if err := resolveDependencies(dep, dependencyVersionConstraint); err != nil {
+		if err := resolveDependencies(dep, dependencyVersionConstraint, parents); err != nil {
 			return err
 		}
 	}
 	return nil
 }
-
 func highestCompatibleVersion(constraintStr string, versions *npmPackageMetaResponse) (string, error) {
 	constraint, err := semver.NewConstraint(constraintStr)
 	if err != nil {
