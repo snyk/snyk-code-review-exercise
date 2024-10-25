@@ -22,7 +22,20 @@
  *     }
  *   }
  * }
- */
+
+*/
+
+export type Package = {
+  version: string;
+  dependencies: Record<string, Package>;
+};
+
+export type GetPackageResult = {
+  name: string;
+  version: string;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  dependencies: Record<string, Package | {}>;
+};
 export interface NPMPackage {
   name: string;
   description: string;

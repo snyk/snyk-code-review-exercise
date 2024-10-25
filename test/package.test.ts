@@ -52,7 +52,7 @@ describe('/package/:name/:version endpoint', () => {
         dependencies: {},
       },
       'prop-types': {
-        version: '15.8.0',
+        version: '15.8.1',
         dependencies: {
           'object-assign': {
             version: '4.1.1',

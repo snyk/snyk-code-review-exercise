@@ -7,7 +7,7 @@
     "node": "^12.0.0"
   },
   "scripts": {
-    "start": "nodemon --watch src --ext .ts --exec \"$(npm bin)/ts-node ./src/main.ts\"",
+    "start": "nodemon --watch src --ext .ts --exec \"ts-node ./src/main.ts\"",
     "test": "jest",
     "lint": "eslint '{src,test}/**/*.ts'",
     "format": "prettier '{src,test}/**/*.ts'"
