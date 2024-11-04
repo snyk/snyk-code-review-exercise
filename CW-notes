@@ -1,0 +1,56 @@
+Objective: Provide a full list of transitive dependencies for packages
+
+No output when running locally?
+
+package.ts:
+
+Line 6-7: New type package added to represent the nested structure of dependencies with both the version and dependencies field.
+Line 13: dependencyTree as an object at the start of getPackage helps in structuring the tree at the root, which is then passed down recursively. Keeps dependencies in single nested object - making response nested JSON tree
+Line 34: getDependencies retrieves dependencies recursively for each sub-dependency, making additional calls to the nom registry for each package to build a complete dependency tree. Finds the latest matching version using maxSatisfying. 
+
+Considerations:
+- Error handling in getDependencies - network errors, missing versions - would cause the entire tree-building process to fail. 
+    Suggestion: - Consider using try-catch block on await calls:
+                try { npmPackage....
+                } catch (error)
+                - if (!version) { return {version: No version for $range}}
+               - Add catch statement as done abive catch (error) { return { version: 'Error fetching package ${name}: ${error.message} }}
+               - Using Throwable equiv throw new Error
+    Consider: Custom Error class to handle different errors more gracefully
+- Logging: in getPackage the catch block calls next(error) without any specific logging or handling - may be useful to add a more descriptive error message.
+    Example: catch (error) { console.error('Error fetching package ${name}, error.message)}
+- Add console logging
+    Example: console.log('Fetching package: ${name}, version ${version}')
+
+Optimisation:
+Cache repeated requests to store results in memory for packages that have already been fetched during traversal, to reduce API calls. 
+            - Create cache object, using package name as a key. const dependencyCache: Record<string, Package> = {}; and   const cacheKey = `${name}@${range}`;
+            - Check if package is in cache  if (dependencyCache[cacheKey]) {
+            console.log(`Cache hit for ${cacheKey}`);
+            return dependencyCache[cacheKey];
+            }
+            - Cache result before returning:  dependencyCache[cacheKey] = newDeps;
+Use visited set to prevent infinite loops caused by circular depndencies (A -> B -> A):
+            - Add visited: Set<String> as a param
+            - Check if the package has already been visited - if (visited.has(name)) { return //empty depndency object}
+Concurrency rate limiting:
+            - set the maximum number of concurrent requests - using pLimit const limit = pLimit(5)
+
+
+Structural improvements:
+Add retry logic: 
+                - Create new function fetchWithRetry
+                - SGive it URL, number of retries (Int), backoff time
+                - Handle 429 rate limit error - wait before retrying
+                - Call function in getDepndencies
+Return partial dependency tree:
+                - return dependencyTree
+
+
+Package.test.ts
+Overall: Test data moves away from flat structure, and now mocks the recursive structure with nested dependencies - the new nested JSON structure
+		
+Considerations:
+- What if there’s instances of deeper nesting or cyclical dependencies ( A -> B -> A)
+- What if we add tests with multiple valid versions (multiple versions of object-assign) to check if maxSatisfying correctly picks up the latest version
+- Tests for invalid input or missing dependencies?

@@ -32,8 +32,10 @@ describe('/package/:name/:version endpoint', () => {
     const res: any = await got(
       `http://localhost:${port}/package/${packageName}/${packageVersion}`,
     );
+
     const json = JSON.parse(res.body);
 
+  
     expect(res.statusCode).toEqual(200);
     expect(json.name).toEqual(packageName);
     expect(json.version).toEqual(packageVersion);
