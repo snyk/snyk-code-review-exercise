@@ -11,7 +11,7 @@ executors:
 jobs:
   test:
     executor: python311
-    resource_class: 'small'
+    resource_class: "small"
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
@@ -23,7 +23,7 @@ jobs:
             poetry run pytest
   lint:
     executor: python311
-    resource_class: 'small'
+    resource_class: "small"
     steps:
       - run:
           name: Install pre-commit

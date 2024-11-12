@@ -5,7 +5,7 @@ tree of a [npm](https://npmjs.org) package.
 
 ## Prerequisites
 
-* [Python 3.11](https://www.python.org/downloads/release/python-3116/)
+- [Python 3.11](https://www.python.org/downloads/release/python-3116/)
 
 ## Getting Started
 
