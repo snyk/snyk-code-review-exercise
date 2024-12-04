@@ -3,5 +3,5 @@
 #include "model.h"
 
 namespace npm {
-  model::VersionedPackage get_versioned_package(const std::string& name, const std::string& version);
+  model::VersionedPackage get_versioned_package(const std::string& name, const std::string& range);
 }

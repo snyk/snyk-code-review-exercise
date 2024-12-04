@@ -8,7 +8,7 @@ using model::VersionedPackage;
 
 TEST(VersionedPackageTest, TestGetVersionedPackage) {
     // Define an instance of VersionedPackage
-    VersionedPackage package = npm::get_versioned_package("express", "2.0.0");
+    VersionedPackage package = npm::get_versioned_package("minimatch", "3.1.2");
 
     // Serialize the instance to JSON
     json generated_json;
@@ -16,13 +16,17 @@ TEST(VersionedPackageTest, TestGetVersionedPackage) {
 
     std::string expected_json_str = R"({
         "dependencies": [
-          ["connect", ">= 1.1.0 < 2.0.0"],
-          ["mime", ">= 0.0.1"], 
-          ["qs", ">= 0.0.6"]
+          {
+            "dependencies": [
+              {"dependencies": [], "name": "balanced-match", "version": "1.0.2"},
+              {"dependencies": [], "name": "concat-map", "version": "0.0.1"}
+            ],
+            "name": "brace-expansion",
+            "version": "1.1.11"
+          }
         ],
-        "name": "express",
-        "version": "2.0.0",
-        "description": "Sinatra inspired web development framework"
+        "name": "minimatch",
+        "version": "3.1.2"
     })";
     json expected_json = json::parse(expected_json_str);
 

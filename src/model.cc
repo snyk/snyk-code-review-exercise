@@ -5,7 +5,6 @@ namespace model {
     j = nlohmann::json{
       {"name", vp.name_},
       {"version", vp.version_},
-      {"description", vp.description_},
       {"dependencies", vp.dependencies_}
     };
   }
