@@ -14,6 +14,9 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+// idea: add test cases for invalid package names and versions
+// idea: if the output from the npm website changes this test starts to fail. 
+// Could we find some way to mock the response that the npm website returns? 
 func TestPackageHandler(t *testing.T) {
 	handler := api.New()
 	server := httptest.NewServer(handler)
@@ -41,3 +44,6 @@ func TestPackageHandler(t *testing.T) {
 
 	assert.Equal(t, fixtureObj, data)
 }
+
+// review: add unit test for the function `resolveDependencies` that was 
+// introduced as part of this PR. 
