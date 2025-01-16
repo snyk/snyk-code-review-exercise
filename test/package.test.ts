@@ -24,14 +24,18 @@ describe('/package/:name/:version endpoint', () => {
     await new Promise((resolve) => server.close(resolve));
   });
 
+  // review: this only handles the happy path. We should also test for error cases and edge cases.
   it('responds', async () => {
     const packageName = 'react';
     const packageVersion = '16.13.0';
 
+    // review: this is calling the real npm registry, which is not a good idea for tests. We should use a mock server instead.
+    // idea: consider using nock to mock every request to the internet.
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const res: any = await got(
       `http://localhost:${port}/package/${packageName}/${packageVersion}`,
     );
+    // idea: we could use supertest to make the assertions easier to read.
     const json = JSON.parse(res.body);
 
     expect(res.statusCode).toEqual(200);
