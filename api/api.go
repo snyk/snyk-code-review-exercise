@@ -84,8 +84,8 @@ func resolveDependencies(pkg *NpmPackageVersion, versionConstraint string) error
 	// for the same package, most likely. 
 	pkgMeta, err := fetchPackageMeta(pkg.Name)
 	if err != nil {
-		// review: add a log message here as we need to know if any dependencies 
-		// have missing meta data that cause errors. 
+		// review: wrap this error so we know it happened when fetching the pkg metadata.
+		// We need to know if any dependencies have missing meta data that cause errors. 
 		return err
 	}
 	// review: `semver.NewConstraint` can't handle constraints that come from exceptions. 
@@ -95,8 +95,9 @@ func resolveDependencies(pkg *NpmPackageVersion, versionConstraint string) error
 	// before passing the the second part of the split as the versionConstraint.
 	// N.B. We may also have to use the first part of the split as the package name. 
 	concreteVersion, err := highestCompatibleVersion(versionConstraint, pkgMeta)
-	// review: add logging, we need to know if there are errors processing the constraint string
-	// and for what package
+	// review: wrap this error so we know it happened when trying to find the highest compatible 
+	// version. We need to know if there are errors processing the constraint string 
+	// and for what package.
 	if err != nil {
 		return err
 	}

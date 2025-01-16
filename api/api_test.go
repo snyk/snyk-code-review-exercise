@@ -42,6 +42,8 @@ func TestPackageHandler(t *testing.T) {
 	var fixtureObj api.NpmPackageVersion
 	require.Nil(t, json.NewDecoder(fixture).Decode(&fixtureObj))
 
+	// review: test currently fails as we need prop-types 15.8.1 but the 
+	// fixture sets the expectation to 15.7.2
 	assert.Equal(t, fixtureObj, data)
 }
 
