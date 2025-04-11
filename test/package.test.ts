@@ -1,7 +1,15 @@
 import got from 'got';
 import { Server } from 'http';
 import { createApp } from '../src/app';
+// idea: unit vs atdd
+// check small functions for unit - getDependencies
 
+// designPattern unit test, 
+// break even further
+// cache function
+// getPackage
+
+// happy paths, sad paths, edge cases
 describe('/package/:name/:version endpoint', () => {
   let server: Server;
   let port: number;
@@ -23,7 +31,21 @@ describe('/package/:name/:version endpoint', () => {
   afterAll(async () => {
     await new Promise((resolve) => server.close(resolve));
   });
+  //review: sad path
+  // 404, 500, any other status that we see often
+  // Given, when, then 200. 
+  // Gherkin
+  // package | version | status | response
+  // constants
+  // scanorio - JSON w/ a version difference
+  // React200v1.4
+  // React200v.1.3
 
+  // mock EP functionality - unit
+
+  // manipulate data/test 
+  // atdd - have a messy data
+   
   it('responds', async () => {
     const packageName = 'react';
     const packageVersion = '16.13.0';
